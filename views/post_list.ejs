@@ -6,9 +6,15 @@
 <ol>
     <% postList.results.forEach(function(post) {%>
         <li>
-            <p> New post from user <%= post.userId %> - <%= format(post.createdAt, "HH:mm, dd-MM-yyyy") %> </p>
+            <p> New post from user <%= post.postedBy.username %> - <%= format(post.createdAt, "HH:mm, dd-MM-yyyy") %> </p>
             <%= post.message %> 
             <img src="<%= post.imageUrl %>"/>
+            
+            <% if(post.likedBy.length === 1) { %> <p> Liked by  <%= post.likedBy[0].name %>. </p><% } %>
+            <% if(post.likedBy.length > 1) { %> <p> Liked by  <%= post.likedBy[0].name %> and <%= post.likedBy.length -1 %> others. </p><% } %>
+
+            <% if(post.dislikedBy.length === 1) { %> <p> Disliked by  <%= post.dislikedBy[0].name %>. </p><% } %>
+            <% if(post.dislikedBy.length > 1) { %> <p> Disliked by  <%= post.dislikedBy[0].name %> and <%= post.dislikedBy.length -1 %> others. </p><% } %>
         </li>
     <% }); %>
 </ol>
