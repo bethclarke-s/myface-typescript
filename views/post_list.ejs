@@ -6,7 +6,9 @@
 <ol>
     <% postList.results.forEach(function(post) {%>
         <li>
-            <%= post.message %> - <%= format(post.createdAt, "yyyy-MM-dd HH:mm:ss") %>
+            <p> New post from user <%= post.userId %> - <%= format(post.createdAt, "HH:mm, dd-MM-yyyy") %> </p>
+            <%= post.message %> 
+            <img src="<%= post.imageUrl %>"/>
         </li>
     <% }); %>
 </ol>
