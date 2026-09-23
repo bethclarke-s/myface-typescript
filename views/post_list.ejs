@@ -10,14 +10,16 @@
             <%= post.message %> 
             <img src="<%= post.imageUrl %>"/>
             
-            <% if(post.likedBy.length === 1) { %> <p> Liked by  <%= post.likedBy[0].name %>. </p><% } %>
-            <% if(post.likedBy.length > 1) { %> <p> Liked by  <%= post.likedBy[0].name %> and <%= post.likedBy.length -1 %> others. </p><% } %>
+            <% if(post.likedBy.length === 1) { %> <p> Liked by  <%= post.likedBy[0].name %>. </p><% } else if (post.likedBy.length > 1) { %> <p> Liked by  <%= post.likedBy[0].name %> and <%= post.likedBy.length -1 %> others. </p><% } %>
 
-            <% if(post.dislikedBy.length === 1) { %> <p> Disliked by  <%= post.dislikedBy[0].name %>. </p><% } %>
-            <% if(post.dislikedBy.length > 1) { %> <p> Disliked by  <%= post.dislikedBy[0].name %> and <%= post.dislikedBy.length -1 %> others. </p><% } %>
+            <% if(post.dislikedBy.length === 1) { %> <p> Disliked by  <%= post.dislikedBy[0].name %>. </p><% } else if(post.dislikedBy.length > 1) { %> <p> Disliked by  <%= post.dislikedBy[0].name %> and <%= post.dislikedBy.length -1 %> others. </p><% } %>
         </li>
     <% }); %>
 </ol>
+
+<% if (postList.previous) { %> <a href="<%= postList.previous %>">Previous page</a> <% } %>
+<% if (postList.next) { %> <a href="<%= postList.next %>">Next page</a> <% } %>
+
 </body>
 <%- include('_footer') -%>
 </html>
